@@ -37,7 +37,6 @@ export class ProductsListComponent implements OnInit{
     this.products$ = this.productService.getProducts();
     this.products$.subscribe(products => {
       this.groupProductsByCategory(products)
-      console.log(products)
     })
   }
 
