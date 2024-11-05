@@ -6,7 +6,12 @@ import { Product } from '../interfaces/product';
 
 export const supabase = createClient(
   environment.supabaseUrl, 
-  environment.supabaseKey
+  environment.supabaseKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false
+    }
+  }
 )
 
 @Injectable({
