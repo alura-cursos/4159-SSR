@@ -1,5 +1,5 @@
 {
-  "name": "deleite-no-ssr",
+  "name": "deleite",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

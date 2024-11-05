@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "deleite-no-ssr": {
+    "deleite": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/deleite-no-ssr",
+            "outputPath": "dist/deleite",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "deleite-no-ssr:build:production"
+              "buildTarget": "deleite:build:production"
             },
             "development": {
-              "buildTarget": "deleite-no-ssr:build:development"
+              "buildTarget": "deleite:build:development"
             }
           },
           "defaultConfiguration": "development"
