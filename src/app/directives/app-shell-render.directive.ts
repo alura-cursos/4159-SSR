@@ -2,7 +2,7 @@ import { isPlatformServer } from "@angular/common";
 import { Directive, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef } from "@angular/core";
 
 @Directive({
-  selector: "[AppShellRender]",
+  selector: "[appShellRender]",
   standalone: true
 })
 export class AppShellRenderDirective implements OnInit{

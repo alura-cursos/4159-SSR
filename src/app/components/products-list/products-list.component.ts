@@ -2,22 +2,26 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { MatList, MatListItem } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { Product } from '../../interfaces/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
+import { AppShellRenderDirective } from '../../directives/app-shell-render.directive';
 
 @Component({
   selector: 'app-products-list',
   standalone: true,
   imports: [
+    AppShellRenderDirective,
     CommonModule,
     ProductCardComponent,
     MatGridList,
     MatGridTile,
     MatList,
-    MatListItem
+    MatListItem,
+    MatProgressSpinnerModule
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.css'

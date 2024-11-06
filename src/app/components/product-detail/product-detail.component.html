@@ -6,6 +6,11 @@
     <span class="back-text">Detalhes do produto</span>
   </div>
 
+  <div class="loading-placeholder" *appShellRender>
+    <mat-spinner></mat-spinner>
+    <p>Carregando detalhes do produto</p>
+  </div>
+
   @if (product$ | async; as product) {
   <div class="content">
     <div class="product-image">
