@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { MatList, MatListItem } from '@angular/material/list';
 
 import { Product } from '../../interfaces/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
@@ -13,11 +11,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
-    ProductCardComponent,
-    MatGridList,
-    MatGridTile,
-    MatList,
-    MatListItem
+    ProductCardComponent
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.css'
