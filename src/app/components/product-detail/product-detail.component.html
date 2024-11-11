@@ -13,7 +13,7 @@
 
   @if (product$ | async; as product) {
   <div class="content">
-    <div class="product-image">
+    <div class="product-image" *appShellNoRender>
       <img [src]="product.imageDetails" alt="{{ product.title }}">
     </div>
 
