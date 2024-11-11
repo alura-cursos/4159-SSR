@@ -11,9 +11,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { Meta, Title } from '@angular/platform-browser';
 
-import { catchError, Observable, of, tap } from 'rxjs';
 import { Product } from '../../interfaces/product';
-import { ProductService } from '../../services/product.service';
 import { AppShellNoRenderDirective } from '../../directives/app-shell-no-render.directive';
 import { AppShellRenderDirective } from '../../directives/app-shell-render.directive';
 
@@ -39,28 +37,19 @@ import { AppShellRenderDirective } from '../../directives/app-shell-render.direc
 })
 export class ProductDetailComponent implements OnInit{
   quantities: number[] = [1, 2, 3, 4, 5];
-  product$!: Observable<Product | null>;
+  product!: Product;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
     private title: Title,
     private meta: Meta
   ) {}
 
   ngOnInit(): void {
-    const productId = parseInt(this.route.snapshot.paramMap.get('id') ?? '0', 10);
-    this.product$ = this.productService.getProductById(productId).pipe(
-      catchError(error => {
-        console.error('Error fetching product', error)
-        return of(null);
-      }),
-      tap(product => {
-        if(product) {
-          this.setPageMeta(product)
-        }
-      })
-    )
+    this.product = this.route.snapshot.data['product'];
+    if(this.product) {
+      this.setPageMeta(this.product)
+    }
   }
 
   setPageMeta(product: Product) {
