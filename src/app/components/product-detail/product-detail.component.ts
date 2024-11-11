@@ -9,8 +9,9 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { Meta, Title } from '@angular/platform-browser';
 
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product.service';
 import { AppShellNoRenderDirective } from '../../directives/app-shell-no-render.directive';
@@ -42,7 +43,9 @@ export class ProductDetailComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +54,23 @@ export class ProductDetailComponent implements OnInit{
       catchError(error => {
         console.error('Error fetching product', error)
         return of(null);
+      }),
+      tap(product => {
+        if(product) {
+          this.setPageMeta(product)
+        }
       })
     )
+  }
+
+  setPageMeta(product: Product) {
+    this.title.setTitle(`${product.title} - Detalhes do produto`);
+    this.meta.addTags([
+      { name: 'description', content: product.ingredients },
+      { property: 'og:title', content: product.title },
+      { property: 'og:description', content: product.ingredients },
+      { property: 'og:image', content: product.imageDetails },
+      { name: 'twitter:card', content: 'summary_large_image' }
+    ])
   }
 }
