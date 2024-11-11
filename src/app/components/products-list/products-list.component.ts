@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { MatList, MatListItem } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { Product } from '../../interfaces/product';
@@ -17,10 +15,6 @@ import { AppShellRenderDirective } from '../../directives/app-shell-render.direc
     AppShellRenderDirective,
     CommonModule,
     ProductCardComponent,
-    MatGridList,
-    MatGridTile,
-    MatList,
-    MatListItem,
     MatProgressSpinnerModule
   ],
   templateUrl: './products-list.component.html',
