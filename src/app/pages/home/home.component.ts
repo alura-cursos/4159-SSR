@@ -1,4 +1,5 @@
-import { afterNextRender, Component } from '@angular/core';
+import { afterNextRender, Component, inject, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { ProductsListComponent } from '../../components/products-list/products-list.component';
 
@@ -9,7 +10,10 @@ import { ProductsListComponent } from '../../components/products-list/products-l
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
 
   constructor() {
     afterNextRender(() => {
@@ -21,5 +25,13 @@ export class HomeComponent {
         console.error("Erro ao obter a localização")
       }
     })
+  }
+
+  ngOnInit(): void {
+    this.setPageMeta();
+  }
+
+  setPageMeta() {
+    this.title.setTitle('Deleite - a melhor experiência em sabores');
   }
 }
